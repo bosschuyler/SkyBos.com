@@ -19,8 +19,12 @@ Route::get('/', function () {
 Route::get('home', 'HomeController@index');
 
 Route::get('tools/stringer', 'ToolsController@stringer');
+Route::post('tools/process-stringer', 'ToolsController@processStringer');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

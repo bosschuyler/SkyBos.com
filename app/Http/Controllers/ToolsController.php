@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Stringer;
+use App\Services\Stringer;
 
 class ToolsController extends Controller {
 
@@ -23,7 +23,7 @@ class ToolsController extends Controller {
 	 */
 	public function __construct()
 	{
-		// $this->middleware('auth');
+		$this->middleware('auth');
 	}
 
 	/**
@@ -31,13 +31,12 @@ class ToolsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		return view('home');
+
+	public function stringer() {
+		return view('tools.stringer');
 	}
 
-
-	public function stringer(Request $request) {
+	public function processStringer(Request $request) {
 
 		$treadRun = $request->input('treadRun');
 		$maxTreadRise = $request->input('maxTreadRise');
@@ -45,11 +44,10 @@ class ToolsController extends Controller {
 		$deckingHeight = $request->input('deckingHeight');
 		$heightOfStairs = $request->input('totalHeight');
 
-
 		$stringer = Stringer::calculateByTotalHeight($boardWidth, $treadRun, $deckingHeight, $heightOfStairs);
 		$data = $stringer->getAttributes();
 
-		return view('tools.stringer', array(
+		return view('tools.process-stringer', array(
 			'item'=>$stringer
 		));
 
