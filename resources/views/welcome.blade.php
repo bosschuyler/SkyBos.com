@@ -7,9 +7,9 @@
 <!DOCTYPE html>
     <div class="body">
         <div class="wrapper">
-            <div class="content">
+            <!-- <div class="content">
                 <div class="title">SkyBos</div>
-            </div>
+            </div> -->
 
            <div class="container text-left">
                 <div class="row">

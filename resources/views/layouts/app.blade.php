@@ -48,9 +48,12 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
+
+                @if (Auth::check())
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/home') }}">Home</a></li>
+                    </ul>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -66,7 +69,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/tools/stringer') }}"><i class="fa fa-btn fa-calculator"></i>Stair Calculation</a></li>
+                                <li><a href="{{ url('/tools/stair-calculator') }}"><i class="fa fa-btn fa-calculator"></i>Stair Calculation</a></li>
                             </ul>
                         </li>   
 

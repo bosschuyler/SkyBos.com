@@ -72,10 +72,9 @@
             <h2 class="text-primary"><i class="fa fa-dashboard"></i> Dashboard</h2>
 
             <br>
-            <h4>Tools</h4>
             <div class="row">
                 <div class="col-sm-4">
-                    <a href="{{ url('/tools/stringer') }}">
+                    <a href="{{ url('/tools/stair-calculator') }}">
                         <div class="info-box info">
                             <i class="fa fa-calculator"></i>
 

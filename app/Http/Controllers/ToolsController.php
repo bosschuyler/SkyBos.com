@@ -32,11 +32,11 @@ class ToolsController extends Controller {
 	 * @return Response
 	 */
 
-	public function stringer() {
-		return view('tools.stringer');
+	public function stairCalculator() {
+		return view('tools.stair-calculator');
 	}
 
-	public function processStringer(Request $request) {
+	public function stairProcess(Request $request) {
 
 		$treadRun = $request->input('treadRun');
 		$maxTreadRise = $request->input('maxTreadRise');
@@ -47,7 +47,7 @@ class ToolsController extends Controller {
 		$stringer = Stringer::calculateByTotalHeight($boardWidth, $treadRun, $deckingHeight, $heightOfStairs, $maxTreadRise);
 		$data = $stringer->getAttributes();
 
-		return view('tools.process-stringer', array(
+		return view('tools.stair-process', array(
 			'item'=>$stringer,
 			'defaults'=> [
 				''

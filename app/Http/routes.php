@@ -25,8 +25,8 @@ Route::get('/', function () {
 
 Route::get('home', 'HomeController@index');
 
-Route::get('tools/stringer', 'ToolsController@stringer');
-Route::post('tools/process-stringer', 'ToolsController@processStringer');
+Route::get('tools/stair-calculator', 'ToolsController@stairCalculator');
+Route::post('tools/stair-process', 'ToolsController@stairProcess');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
