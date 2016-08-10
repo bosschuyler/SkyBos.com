@@ -3,8 +3,6 @@
 use Exception;
 
 class Stringer {
-
-	
 	
 	protected $attributes = array(
 		'unit'=>'Inches',
@@ -75,6 +73,9 @@ class Stringer {
 		$this->treadRiseAngle = asin($this->treadRise / $this->treadSpacing);
 		$this->treadRunAngle = asin($this->treadRun / $this->treadSpacing);
 
+		$this->largeTreadOffset = $this->treadRun * cos($this->treadRiseAngle);
+		$this->smallTreadOffset = $this->treadRise * sin($this->treadRiseAngle);
+
 		// this is the number of inches the tread will cut into the board perpendicular, the point where the most
 		// board is removed to create the tread on the stringer.
 		$this->boardInset = sin($this->treadRiseAngle) * $this->treadRun;
@@ -87,9 +88,6 @@ class Stringer {
 		// of board left for attaching to the ledger will be greater than a 12" board, but it varies by a ratio of the board to the inset.
 		$ratioMissing = $this->boardRemaining / $this->boardInset;
 
-		// using the ratio we can calculate how much attachment remains based on the treadRise
-		$this->boardAttachment = $ratioMissing * $this->treadRise;
-
 		// using the tread rise angle we can figure out the max distance across the board, which
 		// is food for thought for the bottom tread as that will be the max amount of board remaining
 		// after shortening the height of the bottom tread to accomodate for the decking.
@@ -100,18 +98,23 @@ class Stringer {
 		$this->bottomStairRise = $this->treadRise - $this->deckingHeight;
 
 		// these numbers are used to draw the remaining parts of the bottom step.  since drawing in 
-		// computers is x,y point based, we need to know the distances
+		// computers is x,y point based, we need to know the distances from the top of the board and
+		// the distance from the last point.
 		$this->bottomInset = sin($this->treadRunAngle) * $this->bottomStairRise;
 		$this->bottomOffset = cos($this->treadRunAngle) * $this->bottomStairRise;
 
+		// this is the distance from the board inset point to the back of the board.
 		$this->boardRemainingBottom = $this->boardWidth - $this->bottomInset;
 
+		// the length of the bottom of the stringer that will rest on the ground
 		$this->bottomBoardLength = $this->boardRemainingBottom / cos($this->treadRunAngle);
+
+		// the distance from the end of the board to the point where the bottom of the stringer meets the back of the
+		// board.
 		$this->bottomBoardBack = sqrt( pow($this->bottomBoardLength,2) - pow($this->boardRemainingBottom, 2));
 
-		$this->largeTreadOffset = $this->treadRun * cos($this->treadRiseAngle);
-		$this->smallTreadOffset = $this->treadRise * sin($this->treadRiseAngle);
-
+		// using the ratio we can calculate how much attachment remains based on the treadRise
+		$this->boardAttachment = $ratioMissing * $this->treadRise;
 		$this->attachmentOffset = sin($this->treadRiseAngle) * $this->boardAttachment;
 	}	
 

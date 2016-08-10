@@ -44,11 +44,14 @@ class ToolsController extends Controller {
 		$deckingHeight = $request->input('deckingHeight');
 		$heightOfStairs = $request->input('totalHeight');
 
-		$stringer = Stringer::calculateByTotalHeight($boardWidth, $treadRun, $deckingHeight, $heightOfStairs);
+		$stringer = Stringer::calculateByTotalHeight($boardWidth, $treadRun, $deckingHeight, $heightOfStairs, $maxTreadRise);
 		$data = $stringer->getAttributes();
 
 		return view('tools.process-stringer', array(
-			'item'=>$stringer
+			'item'=>$stringer,
+			'defaults'=> [
+				''
+			]
 		));
 
 	}

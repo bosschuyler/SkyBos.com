@@ -10,12 +10,25 @@
 				<div class="row">
 					<div class="col-sm-6"><strong>Number Of Stairs</strong></div>
 					<div class="col-sm-6">{!! $item->numberOfStairs !!}</div>
+				</div>				
+
+				<div class="row">
+					<div class="col-sm-6"><strong>Board Width</strong></div>
+					<div class="col-sm-6">{!! ViewHelper::fraction($item->boardWidth) !!}"</div>
 				</div>
 
 				<div class="row">
-					<div class="col-sm-6"><strong>Tread Spacing</strong></div>
+					<div class="col-sm-6"><strong>Board Length Required</strong></div>
+					<div class="col-sm-6">{!! ViewHelper::fraction($item->treadSpacing * $item->numberOfStairs) !!}"</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6"><strong>Distance Between Treads</strong></div>
 					<div class="col-sm-6">{!! ViewHelper::fraction($item->treadSpacing) !!}"</div>
 				</div>
+
+
+
 			</div>
 
 			<div class="col-sm-6">
@@ -31,16 +44,6 @@
 				</div>
 
 				<div class="row">
-					<div class="col-sm-6"><strong>Large Angle</strong></div>
-					<div class="col-sm-6">{!! number_format(rad2deg($item->treadRunAngle), 2) !!} Degrees</div>
-				</div>
-
-				<div class="row">
-					<div class="col-sm-6"><strong>Small Angle</strong></div>
-					<div class="col-sm-6">{!! number_format(rad2deg($item->treadRiseAngle), 2) !!} Degrees</div>
-				</div>
-
-				<div class="row">
 					<div class="col-sm-6"><strong>Tread Inset</strong></div>
 					<div class="col-sm-6">{!! ViewHelper::fraction($item->boardInset) !!}"</div>
 				</div>
@@ -48,6 +51,16 @@
 				<div class="row">
 					<div class="col-sm-6"><strong>Board Remaining</strong></div>
 					<div class="col-sm-6">{!! ViewHelper::fraction($item->boardRemaining) !!}"</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6"><strong>Large Angle</strong></div>
+					<div class="col-sm-6">{!! number_format(rad2deg($item->treadRunAngle), 2) !!} Degrees</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6"><strong>Small Angle</strong></div>
+					<div class="col-sm-6">{!! number_format(rad2deg($item->treadRiseAngle), 2) !!} Degrees</div>
 				</div>
 			</div>
 

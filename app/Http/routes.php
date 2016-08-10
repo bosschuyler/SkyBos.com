@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+	if (Auth::check())
+	{
+	    return Redirect::intended('home');
+	} else {
+		return view('welcome');
+	}
+    
 });
 
 

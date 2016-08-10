@@ -24,35 +24,35 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Board Width</label>
 							<div class="col-md-6">
-								<input class="form-control" name="boardWidth">
+								<input class="form-control" name="boardWidth" value="11.25">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Tread Max Rise</label>
 							<div class="col-md-6">
-								<input class="form-control" name="treadMaxRise">
+								<input class="form-control" name="treadMaxRise" value="7.75">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Tread Run</label>
 							<div class="col-md-6">
-								<input class="form-control" name="treadRun">
+								<input class="form-control" name="treadRun" value="10">
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label class="col-md-4 control-label">Decking Height</label>
 							<div class="col-md-6">
-								<input class="form-control" name="deckingHeight">
+								<input class="form-control" name="deckingHeight" value="1">
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Total Height</label>
 							<div class="col-md-6">
-								<input class="form-control" name="totalHeight">
+								<input class="form-control" name="totalHeight" value="60">
 							</div>
 						</div>
 
