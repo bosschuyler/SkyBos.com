@@ -1,217 +1,97 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
-	<div class="container" id="main" data-calculations="{{json_encode($item->getAttributes())}}">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading"><h1>Stringer Calculations</h1></div>
+				<div class="panel-heading">Stair Details</div>
+				<div class="panel-body">
+					@if (count($errors) > 0)
+						<div class="alert alert-danger">
+							<strong>Whoops!</strong> There were some problems with your input.<br><br>
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 
-				<div class="panel-body" id="container">
+					<form class="form-horizontal" id="data" role="form" method="POST" action="{{ url('/tools/process-stringer') }}">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-					<div class="row">
-						<div class="col-sm-6">
-							
-							<h3 class="text-left">General Specs</h3>
-							
-							<div class="row">
-								<div class="col-sm-6"><strong>Number Of Stairs</strong></div>
-								<div class="col-sm-6">{!! $item->numberOfStairs !!}</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Tread Spacing</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->treadSpacing) !!}"</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Board Width</label>
+							<div class="col-md-6">
+								<input class="form-control" name="boardWidth">
 							</div>
 						</div>
 
-						<div class="col-sm-6">
-							<h3>Tread Specs</h3>
-							<div class="row">
-								<div class="col-sm-6"><strong>Tread Rise</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->treadRise) !!}"</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Tread Run</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->treadRun) !!}"</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Large Angle</strong></div>
-								<div class="col-sm-6">{!! number_format(rad2deg($item->treadRunAngle), 2) !!} Degrees</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Small Angle</strong></div>
-								<div class="col-sm-6">{!! number_format(rad2deg($item->treadRiseAngle), 2) !!} Degrees</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Tread Inset</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->boardInset) !!}"</div>
-							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Board Remaining</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->boardRemaining) !!}"</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Tread Max Rise</label>
+							<div class="col-md-6">
+								<input class="form-control" name="treadMaxRise">
 							</div>
 						</div>
 
-						<div class="col-sm-6">
-							<h3>Bottom Stair Specs</h3>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Bottom Tread Inset</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->bottomInset) !!}"</div>
+						<div class="form-group">
+							<label class="col-md-4 control-label">Tread Run</label>
+							<div class="col-md-6">
+								<input class="form-control" name="treadRun">
 							</div>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Bottom Board Length</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->bottomBoardLength) !!}"</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-md-4 control-label">Decking Height</label>
+							<div class="col-md-6">
+								<input class="form-control" name="deckingHeight">
 							</div>
 						</div>
 
-						<div class="col-sm-6">							
-							<h3>Top Stair Specs</h3>
-
-							<div class="row">
-								<div class="col-sm-6"><strong>Board Attachment Point</strong></div>
-								<div class="col-sm-6">{!! ViewHelper::fraction($item->boardAttachment) !!}"</div>
-							</div>							
+						<div class="form-group">
+							<label class="col-md-4 control-label">Total Height</label>
+							<div class="col-md-6">
+								<input class="form-control" name="totalHeight">
+							</div>
 						</div>
-					</div>
 
-					<br>
-
-					<canvas id="stringerView" height="400"></canvas>
-
+						<div class="form-group">
+							<div class="col-md-6 col-md-offset-4">
+								<button type="submit" class="btn btn-primary" id="process">Calculate</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
+
+		<div class="col-md-8 col-md-offset-2" id="result-view">
+
+		</div>
 	</div>
 </div>
-
-
-
 @endsection
 
 @section('scripts')
-	
 	<script>
-		jQuery(document).ready(function() {
-			resizeCanvas();
+		$(document).on('click', '#process', function(e) {
+			e.preventDefault();
+
+			var data = $('#data').serialize();
+			console.log(data);
+
+			$.ajax({
+				url: '/tools/process-stringer',
+				data: data,
+				type: 'POST'
+			}).then(function(html) {
+				$('#result-view').html(html);
+			})
+
+
 		});
 
-		var canvas = document.getElementById("stringerView");
-		var tool = canvas.getContext("2d");
-		var data = jQuery('#main').data('calculations');
-
-		window.addEventListener('resize', resizeCanvas);
-
-		function resizeCanvas() {
-			canvas.width = jQuery('#container').width();
-
-			draw();
-		}	
-
-		var canvasWidth = null;
-		var scale = null;
-
-		var leftEdge = 30;
-		var topEdge = 50;
-		var rightEdge = 30;
-		var bottomEdge = 0;
-				
-		function draw() {
-			// convert the width to be dynamic
-
-			canvasWidth = canvas.width;
-
-			data['boardLength'] = data['numberOfStairs'] * data['treadSpacing'];
-			scale = (canvasWidth - (leftEdge + rightEdge)) / data['boardLength'];
-
-			drawBoard();
-			
-			tool.beginPath();
-			tool.fillStyle="#eee";
-			drawAttachment();
-			for(var x=1; x < data['numberOfStairs']; x++) {
-				drawTread(x);
-			}
-			drawBottom(data['numberOfStairs']);
-
-
-			// tool.save();
-			// tool.rotate(-Math.PI/2);
-			// tool.fillText('test', -80,10);
-			// tool.font = '20px "Roboto"';
-			// tool.fillStyle = 'black';
-			// tool.restore();
-		}
-
-		
-
-		function getScaled(propName) {
-			if(data.hasOwnProperty(propName)) {
-				return data[propName] * scale;
-			} else {
-				throw "No data parameter found for: " + propName;
-			}			
-		}
-
-		function drawBoard() {
-			tool.beginPath();
-			tool.moveTo(leftEdge, topEdge);
-			tool.lineTo(leftEdge, getScaled('boardWidth') + topEdge);
-			tool.lineTo(data['numberOfStairs'] * getScaled('treadSpacing') + leftEdge, getScaled('boardWidth') + topEdge);
-			tool.lineTo(data['numberOfStairs'] * getScaled('treadSpacing') + leftEdge, topEdge);
-			tool.lineTo(leftEdge, topEdge);
-			tool.stroke();
-			
-		}
-
-		function getStartOffset(stairNumber) {
-			var multiplier = (stairNumber - 1);
-			return multiplier * getScaled('treadSpacing');
-		}
-
-		function drawAttachment() {
-			tool.beginPath();
-			tool.setLineDash([5]);
-			tool.moveTo(leftEdge, getScaled('boardInset') + topEdge);
-
-			tool.lineTo(getScaled('attachmentOffset') + leftEdge, getScaled('boardWidth') + topEdge);
-			tool.stroke();
-		}
-
-		function drawTread(stairNumber) {
-			tool.beginPath();
-			tool.setLineDash([5]);
-
-			var startOffset = getStartOffset(stairNumber);
-
-			tool.moveTo(startOffset + leftEdge, getScaled('boardInset') + topEdge);
-			tool.lineTo(getScaled('largeTreadOffset') + startOffset + leftEdge, topEdge);
-			tool.lineTo(getScaled('treadSpacing') + startOffset + leftEdge, getScaled('boardInset') + topEdge);
-			tool.stroke();
-
-			
-		}
-
-		function drawBottom(stairNumber) {
-			tool.beginPath();
-			tool.setLineDash([5]);
-
-			var startOffset = getStartOffset(stairNumber);
-
-			tool.moveTo(startOffset + leftEdge, getScaled('boardInset') + topEdge);
-			tool.lineTo(getScaled('largeTreadOffset') + startOffset + leftEdge, topEdge);
-			tool.lineTo(getScaled('largeTreadOffset') + startOffset + getScaled('bottomOffset') + leftEdge, getScaled('bottomInset') + topEdge);
-
-			tool.lineTo((getScaled('largeTreadOffset') + startOffset + getScaled('bottomOffset') + leftEdge) - getScaled('bottomBoardBack'), getScaled('boardWidth') + topEdge);
-			tool.stroke();
-		}
-
 	</script>
+
 @endsection
