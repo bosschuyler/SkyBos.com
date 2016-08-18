@@ -28,6 +28,8 @@ Route::get('home', 'HomeController@index');
 Route::get('tools/stair-calculator', 'ToolsController@stairCalculator');
 Route::post('tools/stair-process', 'ToolsController@stairProcess');
 
+Route::get('sample/code-monkeys', 'SampleController@codeMonkeysPage');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
