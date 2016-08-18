@@ -1,0 +1,221 @@
+/*
+    Icons
+*/
+
+.checkmark-circle {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+.checkmark-circle .background {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+}
+.checkmark-circle .checkmark {
+    border-radius: 5px;
+}
+
+.checkmark-circle .checkmark.draw:after {
+    -webkit-animation-delay: 200ms;
+    -moz-animation-delay: 200ms;
+    animation-delay: 200ms;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease;
+    -moz-animation-timing-function: ease;
+    animation-timing-function: ease;
+    -webkit-animation-name: checkmark;
+    -moz-animation-name: checkmark;
+    animation-name: checkmark;		  
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.checkmark-circle .checkmark:after {
+    opacity: 1;
+    height: 50%;
+    width: 25%;
+    -webkit-transform-origin: left top;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    transform-origin: left top;
+
+    -webkit-transform: scaleX(-1) rotate(135deg);
+    -moz-transform: scaleX(-1) rotate(135deg);
+    -ms-transform: scaleX(-1) rotate(135deg);
+    -o-transform: scaleX(-1) rotate(135deg);
+    transform: scaleX(-1) rotate(135deg);
+
+    border-right: 2.5px solid white;
+    border-top: 2.5px solid white;
+    border-radius: 2.5px !important;
+    content: '';
+    left: 25%;
+    top: 50%;
+    position: absolute;
+}
+
+@-webkit-keyframes checkmark {
+    0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+    }
+    20% {
+    height: 0;
+    width: 25%;
+    opacity: 1;
+    }
+    40% {
+    height: 50%;
+    width: 25%;
+    opacity: 1;
+    }
+    100% {
+    height: 50%;
+    width: 25%;
+    opacity: 1;
+    }
+}
+@-moz-keyframes checkmark {
+    0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+    }
+    20% {
+    height: 0;
+    width: 25%;
+    opacity: 1;
+    }
+    40% {
+    height: 50%;
+    width: 25%;
+    opacity: 1;
+    }
+    100% {
+    height: 50%;
+    width: 25%;
+    opacity: 1;
+    }
+}
+@keyframes checkmark {
+    0% {
+    height: 0;
+    width: 0;
+    opacity: 1;
+    }
+    20% {
+    height: 15%;
+    width: 25%;
+    opacity: 1;
+    }
+    40% {
+    height: 50%;
+    width: 25%;
+    opacity: 1;
+    }
+    100% {
+    height: 50%;
+    width: 25%;
+    opacity: 1;
+    }
+}
+
+/*
+    Animations
+*/
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.spin {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 1000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 1000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+}
+
+
+/*    Coloring  */
+    .text-white {
+        color:#fff;
+    }
+
+    .text-gray {
+        color:#ccc;
+    }
+
+    .text-yellow {
+        color:#fcc21b;
+    }
+
+    .text-orange {
+        color: #ed6c30;
+    }
+
+/*
+    Background Colors
+*/
+    .dark-bg {
+        background-color: #424242;
+        color:#fff;
+    }
+
+    .gray-bg {
+        background-color: #E9E9E9;
+    }
+
+    .green-bg {
+        background: #3c763d;
+    }
+
+/*
+    Helpers
+*/
+.inline-block {
+    display: inline-block
+}
+
+.full-width {
+    width:100%;
+}
+
+
+/* Fonts */
+.lato {
+    font-family: 'Lato';
+}
+
+.oswald {
+    font-family: 'Oswald';
+}
