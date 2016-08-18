@@ -96,6 +96,13 @@
 </div>
 
 <script>
+	
+	
+
+
+
+
+
 		var canvas = null;
 		var tool = null;
 		var data = null;
@@ -108,10 +115,15 @@
 		var rightEdge = 30;
 		var bottomEdge = 0;
 
+		var modeler = null;
+		var stringer = null;
+
 		$(document).ready(function() {
 			canvas = document.getElementById("stringerView");
 			tool = canvas.getContext("2d");
-			data = $('#container').data('calculations');
+
+			modeler = new twoDimViewer(tool);
+
 			resizeCanvas();
 		});
 

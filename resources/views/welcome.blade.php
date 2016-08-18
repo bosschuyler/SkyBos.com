@@ -77,44 +77,41 @@
     </div>
 @endsection
 
-@section('headAdditions') 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('links')
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@endsection
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('styling')
+    <style>
+        html, body {
+            height: 100%;
+        }
 
-            body {
-                
-                
-                
-            }
+        body {}
 
-            .body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                height:100%;
-            }
+        .body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            display: table;
+            height:100%;
+        }
 
-            .wrapper {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+        .wrapper {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+        .content {
+            text-align: center;
+            display: inline-block;
+        }
 
-            .title {
-                font-size: 96px;
-                font-family: 'Lato', sans-serif;
-                font-weight: 100;
-            }
-        </style>
-
+        .title {
+            font-size: 96px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 100;
+        }
+    </style>
 @endsection
