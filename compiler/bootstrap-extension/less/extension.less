@@ -1,0 +1,467 @@
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Core variables and mixins
+@import "../bootstrap-3.3.7/less/variables.less";
+@import "../bootstrap-3.3.7/less/mixins.less";
+
+@xs:	3px;
+@sm:    5px;
+@md:	10px;
+@lg:    15px;
+@xl:	20px;
+@xxl:   30px;
+
+@padding-xs:	@xs;
+@padding-sm:    @sm;
+@padding-md:	@md;
+@padding-lg:    @lg;
+@padding-xl:	@xl;
+@padding-xxl:   @xxl;
+
+@margin-xs:		@xs;
+@margin-sm:		@sm;
+@margin-md:		@md;
+@margin-lg:		@lg;
+@margin-xl:		@xl;
+@margin-xxl:    @xxl;
+
+@brand-white: 			#fff;
+@brand-black:			#000;
+
+@brand-red: 			#d9534f;
+@brand-green: 			#5cb85c;
+@brand-orange:          #E1883C;
+@brand-light-orange:    #f0ad4e;
+@brand-purple:          #6824BD;
+@brand-pink:          	#D050D1;
+@brand-yellow:			#F3EC4A;
+
+.spacing-creation(@selector, @size-name, @size) {
+	.@{selector}-top-@{size-name} {
+		@{selector}-top: @size;
+	}
+
+	.@{selector}-left-@{size-name} {
+		@{selector}-left: @size;
+	}
+
+	.@{selector}-right-@{size-name} {
+		@{selector}-right: @size;
+	}
+
+	.@{selector}-bottom-@{size-name} {
+		@{selector}-bottom: @size;
+	}
+
+	.@{selector}-@{size-name} {
+		@{selector}: @size;
+	}
+}
+
+.spacing-creation(margin, xs, @margin-xs);
+.spacing-creation(margin, sm, @margin-sm);
+.spacing-creation(margin, md, @margin-md);
+.spacing-creation(margin, lg, @margin-lg);
+.spacing-creation(margin, xl, @margin-xl);
+.spacing-creation(margin, xxl, @margin-xxl);
+
+.spacing-creation(padding, xs, @padding-xs);
+.spacing-creation(padding, sm, @padding-sm);
+.spacing-creation(padding, md, @padding-md);
+.spacing-creation(padding, lg, @padding-lg);
+.spacing-creation(padding, xl, @padding-xl);
+.spacing-creation(padding, xxl, @padding-xxl);
+
+.no-margin {
+    margin: 0;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+
+// .bs-callout+.bs-callout {
+//     margin-top: -5px;
+// }
+
+.callout-warning {
+    border-left-color: #aa6708;
+}
+.callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.rounding-creation(@size-name, @size) {
+	.rounded-top-@{size-name} {
+		border-top-left-radius: @size;
+		border-top-right-radius: @size;
+	}
+
+	.rounded-left-@{size-name} {
+		border-top-left-radius: @size;
+		border-bottom-left-radius: @size;
+	}
+
+	.rounded-right-@{size-name} {
+		border-top-right-radius: @size;
+		border-bottom-right-radius: @size;		
+	}
+
+	.rounded-bottom-@{size-name} {
+		border-bottom-left-radius: @size;
+		border-bottom-right-radius: @size;
+	}
+
+	.rounded-@{size-name} {
+		border-radius: @size;
+	}
+}
+
+.rounding-creation(xs, @padding-xs);
+.rounding-creation(sm, @padding-sm);
+.rounding-creation(md, @padding-md);
+.rounding-creation(lg, @padding-lg);
+.rounding-creation(xl, @padding-xl);
+
+.clickable {
+	cursor: pointer;
+}
+
+// CONTAINERS - Panels
+	
+
+	@panel-yellow-border:   @brand-yellow;
+	@panel-yellow-text:     @brand-white;
+	@panel-yellow-heading-bg: @brand-yellow;
+
+	.panel-yellow {
+	  .panel-variant(@panel-yellow-border; @panel-yellow-text; @panel-yellow-heading-bg; @panel-yellow-border);
+	}
+
+	@panel-orange-border:   @brand-orange;
+	@panel-orange-text:     @brand-white;
+	@panel-orange-heading-bg: @brand-orange;
+
+	.panel-orange {
+	  .panel-variant(@panel-orange-border; @panel-orange-text; @panel-orange-heading-bg; @panel-orange-border);
+	}
+
+	@panel-light-orange-border:   @brand-light-orange;
+	@panel-light-orange-text:     @brand-white;
+	@panel-light-orange-heading-bg: @brand-light-orange;
+
+	.panel-light-orange {
+		.panel-variant(@panel-light-orange-border; @panel-light-orange-text; @panel-light-orange-heading-bg; @panel-light-orange-border);
+	}
+
+	@panel-red-border: 		@brand-red;
+	@panel-red-text: 		@brand-white;
+	@panel-red-heading-bg: 	@brand-red;
+
+	.panel-red {
+	  .panel-variant(@panel-red-border; @panel-red-text; @panel-red-heading-bg; @panel-red-border);
+	}
+
+	@panel-green-border: 		@brand-green;
+	@panel-green-text: 			@brand-white;
+	@panel-green-heading-bg: 	@brand-green;
+
+	.panel-green {
+	  .panel-variant(@panel-green-border; @panel-green-text; @panel-green-heading-bg; @panel-green-border);
+	}
+
+
+	.panel-active {
+		border-color: @brand-black;
+	}
+
+
+// BUTTONS
+	@btn-orange-color:              @brand-white;
+	@btn-orange-bg:                 @brand-orange;
+	@btn-orange-border:             darken(@btn-orange-bg, 5%);
+
+	// Danger and error appear as red
+	.btn-orange {
+	  .button-variant(@btn-orange-color; @btn-orange-bg; @btn-orange-border);
+	}
+
+	@btn-light-orange-color:              @brand-white;
+	@btn-light-orange-bg:                 @brand-light-orange;
+	@btn-light-orange-border:             darken(@btn-light-orange-bg, 5%);
+
+	.btn-light-orange {
+	  .button-variant(@btn-light-orange-color; @btn-light-orange-bg; @btn-light-orange-border);
+	}
+
+	@btn-yellow-color:              darken(@brand-yellow, 38%);
+	@btn-yellow-bg:                 @brand-yellow;
+	@btn-yellow-border:             darken(@btn-yellow-bg, 5%);
+
+	.btn-yellow {
+	  .button-variant(@btn-yellow-color; @btn-yellow-bg; @btn-yellow-border);
+	}
+
+	@btn-purple-color:              @brand-white;
+	@btn-purple-bg:                 @brand-purple;
+	@btn-purple-border:             darken(@btn-purple-bg, 5%);
+
+	.btn-purple {
+	  .button-variant(@btn-purple-color; @btn-purple-bg; @btn-purple-border);
+	}
+
+	@btn-pink-color:              @brand-white;
+	@btn-pink-bg:                 @brand-pink;
+	@btn-pink-border:             darken(@btn-pink-bg, 5%);
+
+	.btn-pink {
+	  .button-variant(@btn-pink-color; @btn-pink-bg; @btn-pink-border);
+	}
+
+	@btn-green-color:              @brand-white;
+	@btn-green-bg:                 @brand-green;
+	@btn-green-border:             darken(@btn-green-bg, 5%);
+
+	.btn-green {
+	  .button-variant(@btn-green-color; @btn-green-bg; @btn-green-border);
+	}
+
+	@btn-red-color:              @brand-white;
+	@btn-red-bg:                 @brand-red;
+	@btn-red-border:             darken(@btn-red-bg, 5%);
+
+	.btn-red {
+	  .button-variant(@btn-red-color; @btn-red-bg; @btn-red-border);
+	}
+
+// FONTS AND TEXT MANIPULATION
+	@huge: 40px;
+
+	@code-font: Menlo,Monaco,Consolas,"Courier New",monospace;
+	@gray-bg: #ececec;
+
+	.font-huge {
+		font-size: @huge; 
+		line-height: 1;
+	}
+
+	.text-orange {
+	  .text-emphasis-variant(@brand-orange);
+	}
+
+	.text-light-orange {
+	  .text-emphasis-variant(@brand-light-orange);
+	}
+
+	.text-yellow {
+	  .text-emphasis-variant(@brand-yellow);
+	}
+
+	.text-red {
+	  .text-emphasis-variant(@brand-red);
+	}
+
+	.text-green {
+	  .text-emphasis-variant(@brand-green);
+	}
+
+	.text-purple {
+	  .text-emphasis-variant(@brand-purple);
+	}
+
+	.text-pink {
+	  .text-emphasis-variant(@brand-pink);
+	}
+
+
+
+	.data-label {
+		font-weight:bold;
+	}
+
+	.data-value {
+		
+	}
+
+	.data-font {
+	    font-family: @code-font;
+	}
+
+	.data-container {
+
+		padding: 2px 4px;
+	    font-size: 90%;
+	    background-color: @gray-bg;
+	    border-radius: 4px;
+	    display: inline-block;
+	    
+	    .data-value;
+	    .data-font;
+	}
+
+
+@navbar-dark-color:             #FFF;
+@navbar-dark-bg:                #424242;
+@navbar-dark-border:            darken(@navbar-dark-bg, 6.5%);
+
+// Navbar links
+@navbar-dark-link-color:                #FFF;
+@navbar-default-link-hover-color:          #e9e9e9;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-default-brand-color:               @navbar-dark-link-color;
+@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
+@navbar-default-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-border-color:       #ddd;
+
+
+// Default navbar
+.navbar-dark {
+  background-color: @navbar-dark-bg;
+  border-color: @navbar-dark-border;
+
+  .navbar-brand {
+    color: @navbar-default-brand-color;
+    &:hover,
+    &:focus {
+      color: @navbar-default-brand-hover-color;
+      background-color: @navbar-default-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-default-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-dark-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-hover-color;
+        background-color: @navbar-default-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+        background-color: @navbar-default-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-default-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-default-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-default-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: @navbar-default-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-default-link-active-bg;
+        color: @navbar-default-link-active-color;
+      }
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-dark-link-color;
+          &:hover,
+          &:focus {
+            color: @navbar-default-link-hover-color;
+            background-color: @navbar-default-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-default-link-active-color;
+            background-color: @navbar-default-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-default-link-disabled-color;
+            background-color: @navbar-default-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: @navbar-dark-link-color;
+    &:hover {
+      color: @navbar-default-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: @navbar-dark-link-color;
+    &:hover,
+    &:focus {
+      color: @navbar-default-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-default-link-disabled-color;
+      }
+    }
+  }
+}
