@@ -315,22 +315,22 @@
 
 // Navbar links
 @navbar-dark-link-color:                #FFF;
-@navbar-default-link-hover-color:          #e9e9e9;
-@navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         #555;
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       #ccc;
-@navbar-default-link-disabled-bg:          transparent;
+@navbar-dark-link-hover-color:          #e9e9e9;
+@navbar-dark-link-hover-bg:             transparent;
+@navbar-dark-link-active-color:         #555;
+@navbar-dark-link-active-bg:            darken(@navbar-dark-bg, 6.5%);
+@navbar-dark-link-disabled-color:       #ccc;
+@navbar-dark-link-disabled-bg:          transparent;
 
 // Navbar brand label
-@navbar-default-brand-color:               @navbar-dark-link-color;
-@navbar-default-brand-hover-color:         darken(@navbar-default-brand-color, 10%);
-@navbar-default-brand-hover-bg:            transparent;
+@navbar-dark-brand-color:               @navbar-dark-link-color;
+@navbar-dark-brand-hover-color:         darken(@navbar-dark-brand-color, 10%);
+@navbar-dark-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-default-toggle-hover-bg:           #ddd;
-@navbar-default-toggle-icon-bar-bg:        #888;
-@navbar-default-toggle-border-color:       #ddd;
+@navbar-dark-toggle-hover-bg:           #ddd;
+@navbar-dark-toggle-icon-bar-bg:        #888;
+@navbar-dark-toggle-border-color:       #ddd;
 
 
 // Default navbar
@@ -339,16 +339,16 @@
   border-color: @navbar-dark-border;
 
   .navbar-brand {
-    color: @navbar-default-brand-color;
+    color: @navbar-dark-brand-color;
     &:hover,
     &:focus {
-      color: @navbar-default-brand-hover-color;
-      background-color: @navbar-default-brand-hover-bg;
+      color: @navbar-dark-brand-hover-color;
+      background-color: @navbar-dark-brand-hover-bg;
     }
   }
 
   .navbar-text {
-    color: @navbar-default-color;
+    color: @navbar-dark-color;
   }
 
   .navbar-nav {
@@ -357,42 +357,42 @@
 
       &:hover,
       &:focus {
-        color: @navbar-default-link-hover-color;
-        background-color: @navbar-default-link-hover-bg;
+        color: @navbar-dark-link-hover-color;
+        background-color: @navbar-dark-link-hover-bg;
       }
     }
     > .active > a {
       &,
       &:hover,
       &:focus {
-        color: @navbar-default-link-active-color;
-        background-color: @navbar-default-link-active-bg;
+        color: @navbar-dark-link-active-color;
+        background-color: @navbar-dark-link-active-bg;
       }
     }
     > .disabled > a {
       &,
       &:hover,
       &:focus {
-        color: @navbar-default-link-disabled-color;
-        background-color: @navbar-default-link-disabled-bg;
+        color: @navbar-dark-link-disabled-color;
+        background-color: @navbar-dark-link-disabled-bg;
       }
     }
   }
 
   .navbar-toggle {
-    border-color: @navbar-default-toggle-border-color;
+    border-color: @navbar-dark-toggle-border-color;
     &:hover,
     &:focus {
-      background-color: @navbar-default-toggle-hover-bg;
+      background-color: @navbar-dark-toggle-hover-bg;
     }
     .icon-bar {
-      background-color: @navbar-default-toggle-icon-bar-bg;
+      background-color: @navbar-dark-toggle-icon-bar-bg;
     }
   }
 
   .navbar-collapse,
   .navbar-form {
-    border-color: @navbar-default-border;
+    border-color: @navbar-dark-border;
   }
 
   // Dropdown menu items
@@ -402,8 +402,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: @navbar-default-link-active-bg;
-        color: @navbar-default-link-active-color;
+        background-color: @navbar-dark-link-active-bg;
+        color: @navbar-dark-link-active-color;
       }
     }
 
@@ -414,24 +414,24 @@
           color: @navbar-dark-link-color;
           &:hover,
           &:focus {
-            color: @navbar-default-link-hover-color;
-            background-color: @navbar-default-link-hover-bg;
+            color: @navbar-dark-link-hover-color;
+            background-color: @navbar-dark-link-hover-bg;
           }
         }
         > .active > a {
           &,
           &:hover,
           &:focus {
-            color: @navbar-default-link-active-color;
-            background-color: @navbar-default-link-active-bg;
+            color: @navbar-dark-link-active-color;
+            background-color: @navbar-dark-link-active-bg;
           }
         }
         > .disabled > a {
           &,
           &:hover,
           &:focus {
-            color: @navbar-default-link-disabled-color;
-            background-color: @navbar-default-link-disabled-bg;
+            color: @navbar-dark-link-disabled-color;
+            background-color: @navbar-dark-link-disabled-bg;
           }
         }
       }
@@ -446,7 +446,7 @@
   .navbar-link {
     color: @navbar-dark-link-color;
     &:hover {
-      color: @navbar-default-link-hover-color;
+      color: @navbar-dark-link-hover-color;
     }
   }
 
@@ -454,13 +454,396 @@
     color: @navbar-dark-link-color;
     &:hover,
     &:focus {
-      color: @navbar-default-link-hover-color;
+      color: @navbar-dark-link-hover-color;
     }
     &[disabled],
     fieldset[disabled] & {
       &:hover,
       &:focus {
-        color: @navbar-default-link-disabled-color;
+        color: @navbar-dark-link-disabled-color;
+      }
+    }
+  }
+}
+
+
+
+
+@navbar-blue-color:             #FFF;
+@navbar-blue-bg:                #303442;
+@navbar-blue-border:            darken(@navbar-blue-bg, 6.5%);
+
+// Navbar links
+@navbar-blue-link-color:                #FFF;
+@navbar-blue-link-hover-color:          #e9e9e9;
+@navbar-blue-link-hover-bg:             transparent;
+@navbar-blue-link-active-color:         #555;
+@navbar-blue-link-active-bg:            darken(@navbar-blue-bg, 6.5%);
+@navbar-blue-link-disabled-color:       #ccc;
+@navbar-blue-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-blue-brand-color:               @navbar-blue-link-color;
+@navbar-blue-brand-hover-color:         darken(@navbar-blue-brand-color, 10%);
+@navbar-blue-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-blue-toggle-hover-bg:           #ddd;
+@navbar-blue-toggle-icon-bar-bg:        #888;
+@navbar-blue-toggle-border-color:       #ddd;
+
+
+// Default navbar
+.navbar-blue {
+  background-color: @navbar-blue-bg;
+  border-color: @navbar-blue-border;
+
+  .navbar-brand {
+    color: @navbar-blue-brand-color;
+    &:hover,
+    &:focus {
+      color: @navbar-blue-brand-hover-color;
+      background-color: @navbar-blue-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-blue-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-blue-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-blue-link-hover-color;
+        background-color: @navbar-blue-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-blue-link-active-color;
+        background-color: @navbar-blue-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-blue-link-disabled-color;
+        background-color: @navbar-blue-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-blue-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-blue-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-blue-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: @navbar-blue-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-blue-link-active-bg;
+        color: @navbar-blue-link-active-color;
+      }
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-blue-link-color;
+          &:hover,
+          &:focus {
+            color: @navbar-blue-link-hover-color;
+            background-color: @navbar-blue-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-blue-link-active-color;
+            background-color: @navbar-blue-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-blue-link-disabled-color;
+            background-color: @navbar-blue-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: @navbar-blue-link-color;
+    &:hover {
+      color: @navbar-blue-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: @navbar-blue-link-color;
+    &:hover,
+    &:focus {
+      color: @navbar-blue-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-blue-link-disabled-color;
+      }
+    }
+  }
+}
+
+
+
+
+@navbar-light-blue-color:             #FFF;
+@navbar-light-blue-bg:                #5c9ccc;
+@navbar-light-blue-border:            darken(@navbar-light-blue-bg, 6.5%);
+
+// Navbar links
+@navbar-light-blue-link-color:                #FFF;
+@navbar-light-blue-link-hover-color:          #e9e9e9;
+@navbar-light-blue-link-hover-bg:             transparent;
+@navbar-light-blue-link-active-color:         #B6CEDA;
+@navbar-light-blue-link-active-bg:            darken(@navbar-light-blue-bg, 6.5%);
+@navbar-light-blue-link-disabled-color:       #ccc;
+@navbar-light-blue-link-disabled-bg:          transparent;
+
+// Navbar brand label
+@navbar-light-blue-brand-color:               @navbar-light-blue-link-color;
+@navbar-light-blue-brand-hover-color:         darken(@navbar-light-blue-brand-color, 10%);
+@navbar-light-blue-brand-hover-bg:            transparent;
+
+// Navbar toggle
+@navbar-light-blue-toggle-hover-bg:           #B6CEDA;
+@navbar-light-blue-toggle-icon-bar-bg:        #FFF;
+@navbar-light-blue-toggle-border-color:       #FFF;
+
+
+// Default navbar
+.navbar-light-blue {
+  background-color: @navbar-light-blue-bg;
+  border-color: @navbar-light-blue-border;
+
+  .navbar-brand {
+    color: @navbar-light-blue-brand-color;
+    &:hover,
+    &:focus {
+      color: @navbar-light-blue-brand-hover-color;
+      background-color: @navbar-light-blue-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: @navbar-light-blue-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-light-blue-link-color;
+
+      &:hover,
+      &:focus {
+        color: @navbar-light-blue-link-hover-color;
+        background-color: @navbar-light-blue-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-light-blue-link-active-color;
+        background-color: @navbar-light-blue-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @navbar-light-blue-link-disabled-color;
+        background-color: @navbar-light-blue-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-light-blue-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-light-blue-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-light-blue-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: @navbar-light-blue-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @navbar-light-blue-link-active-bg;
+        color: @navbar-light-blue-link-active-color;
+      }
+    }
+
+    @media (max-width: @grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: @navbar-light-blue-link-color;
+          &:hover,
+          &:focus {
+            color: @navbar-light-blue-link-hover-color;
+            background-color: @navbar-light-blue-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-light-blue-link-active-color;
+            background-color: @navbar-light-blue-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: @navbar-light-blue-link-disabled-color;
+            background-color: @navbar-light-blue-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: @navbar-light-blue-link-color;
+    &:hover {
+      color: @navbar-light-blue-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: @navbar-light-blue-link-color;
+    &:hover,
+    &:focus {
+      color: @navbar-light-blue-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: @navbar-light-blue-link-disabled-color;
+      }
+    }
+  }
+}
+
+
+
+.navbar.thin {
+	min-height:20px;
+}
+
+.navbar.square {
+	border-radius: 0px;
+}
+
+.navbar-nav.always-horizontal {
+		> li > a {
+				float:left;
+		}	
+}
+
+.navbar.thin .navbar-nav {
+  margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
+
+  > li > a {
+    line-height: @line-height-computed;
+		padding: 5px 10px;
+  }
+
+  @media (max-width: @grid-float-breakpoint-max) {
+    // Dropdowns get custom display when collapsed
+    .open .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+      > li > a,
+      .dropdown-header {
+        padding: 2px 15px 2px 25px;
+      }
+      > li > a {
+        line-height: @line-height-computed;
+        &:hover,
+        &:focus {
+          background-image: none;
+        }
+      }
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    margin: 0;
+
+    > li {
+      float: left;
+      > a {
+        padding-top:    5px;
+        padding-bottom: 5px;
       }
     }
   }

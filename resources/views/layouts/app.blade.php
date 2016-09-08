@@ -32,7 +32,7 @@
     @yield('headAdditions')
 </head>
 <body id="app-layout">
-    <nav class="navbar @yield('navbar-theme', 'navbar-default') @yield('navbar-style', 'navbar-static-top') ">
+    <nav class="navbar @yield('navbar-theme', 'navbar-dark') @yield('navbar-style', 'navbar-static-top') ">
         <div class="container">
             <div class="navbar-header">
                 <!-- Collapsed Hamburger -->
@@ -81,12 +81,8 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="/sample/code-monkeys">Sample Page</a></li>
-                            <!-- <li><a href=""><i class="fa fa-btn fa-cogs"></i> API Integration</a></li>
-                            <li><a href=""><i class="fa fa-btn fa-database"></i> Database Optimization</a></li> -->
                         </ul>
                     </li> 	
-
-                    <!-- <li><a class="btn" id="registration-link">Register</a></li> -->
 
                     <!-- Authentication Links -->
                     @if (Auth::guest())
