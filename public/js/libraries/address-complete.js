@@ -1,7 +1,7 @@
 var AddressComplete = Object.create({});
 AddressComplete.defaults = {
     selectors: {
-        container: '.address-complete',
+        main: '.address-complete',
         search: '.search',
         search_container: '.search-container',
         city: '.city',
@@ -29,23 +29,27 @@ AddressComplete.fireEvent = function(event) {
 }
 
 AddressComplete.hideSearch = function() {
-    this.getElement('search_container').addClass('hidden');
+    var classList = this.getElement('search_container').classList;
+    classList.add('hidden');
 }
 
 AddressComplete.showSearch = function() {
-    this.getElement('search_container').removeClass('hidden');
+    var classList = this.getElement('search_container').classList;
+    classList.remove('hidden');
 }
 
 AddressComplete.clearSearch = function() {
-    this.getElement('search').val('');
+    this.getElement('search').value = '';
 }
 
 AddressComplete.hideAddressContainer = function() {
-    this.getElement('address_container').addClass('hidden');
+    var classList = this.getElement('address_container').classList;
+    classList.add('hidden');
 }
 
 AddressComplete.showAddressContainer = function() {
-    this.getElement('address_container').removeClass('hidden');
+    var classList = this.getElement('address_container').classList;
+    classList.remove('hidden');
 }
 
 AddressComplete.geolocate = function () {
@@ -68,17 +72,17 @@ AddressComplete.geolocate = function () {
 AddressComplete.getElement = function(key) {
     var selector = this.getSelector(key);
     if(selector) {
-        return $(this.getSelector('container') + " " + selector);
+        return document.querySelector(this.getFullSelector(key));
     }
     return null;
-} 
+}
 
 AddressComplete.getSelector = function(key) {
     return this.settings['selectors'][key] || null;
 }
 
 AddressComplete.getFullSelector = function(key) {
-    var main = this.getSelector('container');
+    var main = this.getSelector('main');
     var selector = this.getSelector(key);
     if(selector) {
         return main + ' ' + selector;
@@ -87,6 +91,42 @@ AddressComplete.getFullSelector = function(key) {
 }
 
 AddressComplete.create = function(options) {
+    var extend = function () {
+        // Variables
+        var extended = {};
+        var deep = false;
+        var i = 0;
+        var length = arguments.length;
+
+        // Check if a deep merge
+        if ( Object.prototype.toString.call( arguments[0] ) === '[object Boolean]' ) {
+            deep = arguments[0];
+            i++;
+        }
+
+        // Merge the object into the extended object
+        var merge = function (obj) {
+            for ( var prop in obj ) {
+                if ( Object.prototype.hasOwnProperty.call( obj, prop ) ) {
+                    // If deep merge and property is an object, merge properties
+                    if ( deep && Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
+                        extended[prop] = extend( true, extended[prop], obj[prop] );
+                    } else {
+                        extended[prop] = obj[prop];
+                    }
+                }
+            }
+        };
+
+        // Loop through each object and conduct a merge
+        for ( ; i < length; i++ ) {
+            var obj = arguments[i];
+            merge(obj);
+        }
+
+        return extended;
+    };
+
     var obj = Object.create(this);
     obj.settings = extend(true, {}, obj.defaults, options)
     return obj; 
@@ -96,7 +136,7 @@ AddressComplete.init = function() {
     var self = this;
     // Set up the autocomplete to work on the address 1 field
     this.autocomplete = new google.maps.places.Autocomplete(
-        this.getElement('search').get(0),
+        this.getElement('search'),
         {
             types: ['geocode']
         }
@@ -131,11 +171,11 @@ AddressComplete.fillInAddress = function() {
     }   
 
     // Fill in the form!
-    this.getElement('city').val(place.locality.long_name).attr('disabled', false);
-    this.getElement('state').val(place.administrative_area_level_1.short_name).attr('disabled', false);
-    this.getElement('zip').val(place.postal_code.long_name).attr('disabled', false);
-    this.getElement('address').val(place.street_number.long_name + ' ' + place.route.long_name).attr('disabled', false);
-    this.getElement('country').val(place.country.long_name).attr('disabled', false);
+    this.getElement('city').value = place.locality.long_name;
+    this.getElement('state').value = place.administrative_area_level_1.short_name;
+    this.getElement('zip').value = place.postal_code.long_name;
+    this.getElement('address').value = place.street_number.long_name + ' ' + place.route.long_name;
+    this.getElement('country').value = place.country.long_name;
     
     this.fireEvent('address.selected');
 };
